@@ -1,8 +1,4 @@
-use std::{
-    fs,
-    io::Read,
-    path::{Path, PathBuf},
-};
+use std::{fs, io::Read, path::PathBuf};
 
 use serde::Serialize;
 
