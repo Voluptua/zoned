@@ -1,6 +1,5 @@
-# ZONED
+# zoned
 
-Zoned is a CLI converter to convert ZoneData from the 6th Pokemon-Generation to plaintext and vice versa.
-It's written in Rust.
+A CLI-tool for extracting and compiling Zone-Data from the 6th generation Pokemon games. 
 
-EXR property
+Made for Shutan Developement

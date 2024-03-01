@@ -1,7 +1,13 @@
 [package]
 name = "zoned"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
+description = "A CLI-tool for extracting and compiling Zone-Data from the 6th generation Pokemon games"
+readme = "README.md"
+repository = "https://github.com/Voluptua/zoned"
+license = "MIT"
+rust-version = "1.75.0"
+
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
