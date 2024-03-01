@@ -8,8 +8,9 @@ fn main() -> std::io::Result<()> {
         let zone_data_filetype = c.file;
         if let cli::ZoneDataFile::ZoneHeader(io) = zone_data_filetype {
             let zone_header = zone_data::ZoneHeaderData::get_header_from_bytes(io.input.clone())?;
-            let _ = zone_header.store_deserialized_into_json(io);
-            println!("{:#?}", zone_header);
+            if zone_header.store_deserialized_into_json(io).is_ok() {
+                println!("Converted Zone-Header successfully!");
+            }
         } else if let cli::ZoneDataFile::ZoneEntities(_io) = zone_data_filetype {
             println!("SORRY: You can't convert ZoneEntities yet...");
         }

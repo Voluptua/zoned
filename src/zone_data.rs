@@ -69,9 +69,7 @@ impl ZoneHeaderData {
         } else {
             file_name = io.output.unwrap();
         }
-        //if !Path::new(&file_name).is_dir() {
         fs::write(file_name, json_text)?;
-        //}
         Ok(())
     }
 }
