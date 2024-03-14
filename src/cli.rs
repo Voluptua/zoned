@@ -17,14 +17,14 @@ impl ZonedCli {
 #[derive(Subcommand)]
 pub enum Mode {
     /// Converts ZoneData to PlainText
-    Convert(Convert),
+    Convert(File),
     /// Todo: Compiles Plaintext into ZoneData
-    Compile,
+    Compile(File),
 }
 
 #[derive(Parser)]
 #[clap(about)]
-pub struct Convert {
+pub struct File {
     #[clap(subcommand)]
     pub file: ZoneDataFile,
 }

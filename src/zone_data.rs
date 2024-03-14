@@ -1,10 +1,12 @@
+use bincode::serialize;
+use std::io::Write as _;
 use std::{fs, io::Read, path::PathBuf};
 
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 
 use crate::cli::InputOutput;
 
-#[derive(Serialize, Debug, Default)]
+#[derive(Serialize, Deserialize, Debug, Default)]
 #[repr(C)]
 pub struct ZoneHeaderData {
     map_type: u8,
@@ -66,6 +68,38 @@ impl ZoneHeaderData {
             file_name = io.output.unwrap();
         }
         fs::write(file_name, json_text)?;
+        Ok(())
+    }
+
+    pub fn serialize_struct_and_store_into_bin(io: InputOutput) -> Result<(), std::io::Error> {
+        let input_path = io.input;
+
+        let json = fs::read_to_string(input_path)?;
+        let header = serde_json::from_str::<ZoneHeaderData>(json.as_str())?;
+
+        let bin = serialize(&header).unwrap();
+
+        if io.output.is_none() {
+            let mut file = std::fs::File::create("./0")?;
+            let slice = unsafe {
+                std::slice::from_raw_parts(
+                    bin.as_ptr() as *const u8,
+                    std::mem::size_of::<ZoneHeaderData>(),
+                )
+            };
+            file.write_all(slice).unwrap();
+        } else if io.output.is_some() {
+            // Cannot panic because it is_some(); haha funny
+            let path = io.output.unwrap();
+            let mut file = std::fs::File::create(path)?;
+            let slice = unsafe {
+                std::slice::from_raw_parts(
+                    bin.as_ptr() as *const u8,
+                    std::mem::size_of::<ZoneHeaderData>(),
+                )
+            };
+            file.write_all(slice).unwrap();
+        }
         Ok(())
     }
 }

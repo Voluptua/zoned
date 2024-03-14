@@ -1,0 +1,23 @@
+{
+  "map_type": 1,
+  "map_move": 0,
+  "area_data_id": 2,
+  "map_matrix_id": 0,
+  "text_id": 57,
+  "bgm_spring": 65541,
+  "bgm_summer": 65541,
+  "bgm_autumn": 65541,
+  "bgm_winter": 65541,
+  "script_id": 306,
+  "town_map_group": 0,
+  "hex_1c": 1030,
+  "hex_1e": 1344,
+  "hex_20": 27649,
+  "bg_sys_type": 2,
+  "unused_field": 0,
+  "unique_sequence_library_id": 65535,
+  "unknown_flags": 275476,
+  "fly_x": 8415,
+  "fly_y": 0,
+  "fly_z": 10755
+}
